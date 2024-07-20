@@ -1,5 +1,7 @@
 # EliteSite
 
+This project will be used to provide athletes information on being able to learn wrestling and see events. The athletes will also be able to veiw and purchase products that they will need to participate in the Wrestling.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 
 ## Development server
