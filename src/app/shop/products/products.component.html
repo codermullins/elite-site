@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-6" >
+            Products List
+          </div>
+        </div>
+      </div>
+      <div class="card-body" >
+        <div class="row">
+          <div class="col-3" *ngFor="let item of productList">
+            <div class="card">
+              <img class="card-img-top" style="height: 12rem;" [src]="item.imageUrl" alt="Product Image"  >
+              <div class="card-body">
+                <h4 class="card-title">
+                  {{item.productName}}
+                </h4>
+                <p class="card-text">{{item.description}}</p>
+                <h4>{{item.price}}</h4>
+                <div class="btn">Add</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

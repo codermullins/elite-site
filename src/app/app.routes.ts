@@ -1,13 +1,13 @@
-import { Routes } from '@angular/router'
-import { LoginComponent } from './admin/login/login.component'
-import { LayoutComponent } from './admin/layout/layout.component'
-import { LandingPageComponent } from './website/landing-page/landing-page.component'
-import { ProductsComponent } from './admin/products/products.component'
 import { AboutComponent } from './website/about/about.component'
-import { JoinComponent } from './website/join/join.component'
-import { EventsComponent } from './website/events/events.component'
 import { CategoryComponent } from './admin/category/category.component'
 import { ContactComponent } from './website/contact/contact.component'
+import { EventsComponent } from './website/events/events.component'
+import { JoinComponent } from './website/join/join.component'
+import { LandingPageComponent } from './website/landing-page/landing-page.component'
+import { LayoutComponent } from './admin/layout/layout.component'
+import { LoginComponent } from './admin/login/login.component'
+import { ProductsComponent } from './shop/products/products.component'
+import { Routes } from '@angular/router'
 
 export const routes: Routes = [
   {
@@ -40,8 +40,8 @@ export const routes: Routes = [
         component: EventsComponent,
       },
       {
-        path: 'shop/category-products',
-        component: CategoryComponent,
+        path: 'shop/products',
+        component: ProductsComponent,
       },
       {
         path: 'contact',

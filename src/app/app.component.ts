@@ -1,5 +1,7 @@
-import { Component } from '@angular/core'
-import { RouterOutlet, RouterLink } from '@angular/router'
+import { Component, OnInit } from '@angular/core'
+import { RouterLink, RouterOutlet } from '@angular/router'
+
+import { ApiService } from './api.service'
 
 @Component({
   selector: 'app-root',
