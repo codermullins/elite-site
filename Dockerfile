@@ -7,4 +7,4 @@ COPY ./backend/package.json ./
 RUN ls
 RUN npm install
 EXPOSE 4000
-CMD ["node", "server"]
+CMD ["npm", "run", "start"]
