@@ -24,5 +24,6 @@ COPY --from=build /frontend/dist/elite-site/browser .
 
 # change the back and run start script
 WORKDIR /backend
+RUN pwd
 EXPOSE 4000 80
 CMD ["npm run start"]
