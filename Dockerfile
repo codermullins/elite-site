@@ -3,7 +3,8 @@ WORKDIR /app
 COPY . ./
 RUN ls
 WORKDIR /backend
-COPY ./backend/package.json ./
+RUN ls
+COPY ./backend/ ./
 RUN ls
 RUN npm install
 EXPOSE 4000
