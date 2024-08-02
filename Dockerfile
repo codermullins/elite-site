@@ -21,7 +21,7 @@ RUN pwd
 RUN rm -rf *
 
 #copy built angular
-COPY --from=frontend /frontend/dist/elite-site/browser .
+COPY --from=frontend ./frontend/dist/elite-site/browser /usr/share/nginx/html
 
 # change the back and run start script
 WORKDIR /backend
