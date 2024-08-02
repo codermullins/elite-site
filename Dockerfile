@@ -5,9 +5,5 @@ WORKDIR /backend
 COPY ./backend/ ./
 RUN ls
 RUN npm install
-WORKDIR /frontend
-COPY ./frontend ./ 
-RUN ls
-RUN npm install
 EXPOSE 4000
 CMD ["npm start"]
