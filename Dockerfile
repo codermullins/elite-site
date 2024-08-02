@@ -1,6 +1,6 @@
 FROM node:alpine3.18
 WORKDIR /app
-COPY . .
+COPY . ./
 RUN cd ./backend
 RUN npm install
 EXPOSE 4000
