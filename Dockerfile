@@ -9,5 +9,5 @@ WORKDIR /frontend
 COPY ./frontend ./ 
 RUN ls
 RUN npm install
-EXPOSE 4000 4200 22
+EXPOSE 4000
 CMD ["npm start"]
