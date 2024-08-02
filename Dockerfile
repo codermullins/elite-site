@@ -16,7 +16,6 @@ RUN npm run build
 
 #serve the angular app
 FROM nginx:1.23-alpine
-RUN rm -rf *
 
 #copy built angular
 COPY --from=build /frontend/dist/elite-site/browser /usr/share/nginx/html
