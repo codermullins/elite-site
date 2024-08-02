@@ -6,6 +6,7 @@ WORKDIR /backend
 COPY ./backend/ ./
 RUN ls
 RUN npm install
+EXPOSE 4000
 CMD ["npm run start"]
 
 # Frontend build
@@ -24,7 +25,5 @@ RUN rm -rf *
 COPY --from=frontend ./frontend/dist/elite-site/browser /usr/share/nginx/html/
 
 # change the back and run start script
-WORKDIR /backend
-RUN pwd
-EXPOSE 4000 80
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
