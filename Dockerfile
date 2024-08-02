@@ -18,10 +18,9 @@ RUN npm run build
 FROM nginx:1.23-alpine
 WORKDIR /usr/share/nginx/html
 RUN rm -rf *
-RUN ls /frontend
 
 #copy built angular
-COPY --from=frontend app/frontend/dist/elite-site/browser /usr/share/nginx/html
+COPY --from=frontend app/frontend/dist/elite-site/browser /usr/share/nginx/html/
 
 # change the back and run start script
 WORKDIR /backend
