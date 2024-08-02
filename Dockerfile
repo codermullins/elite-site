@@ -10,4 +10,4 @@ COPY ./frontend ./
 RUN ls
 RUN npm install
 EXPOSE 4000 4200 22
-CMD ["npm", "run", "start"]
+CMD ["npm start"]
