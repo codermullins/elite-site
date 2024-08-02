@@ -24,4 +24,4 @@ COPY --from=frontend ./frontend/dist/elite-site/browser /usr/share/nginx/html/
 WORKDIR /backend
 RUN pwd
 EXPOSE 4000 80
-CMD npm run start
+CMD npm start
