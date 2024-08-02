@@ -20,9 +20,9 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf *
 
 #copy built angular
-COPY --from=build /app/dist/elite-site/browser .
+COPY --from=build /app/frontend/dist/elite-site/browser .
 
 # change the back and run start script
 WORKDIR /backend
-EXPOSE 4000 4200
+EXPOSE 4000 80
 CMD npm run start
