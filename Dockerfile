@@ -17,12 +17,12 @@ RUN npm ci
 RUN npm run build
 
 #serve the angular app
-FROM nginx:1.23-alpine
+FROM nginx
 WORKDIR /usr/share/nginx/html
 RUN rm -rf *
 
 #copy built angular
-COPY --from=frontend ./frontend/dist/elite-site/browser /usr/share/nginx/html/
+COPY --from=frontend ./frontend/dist/elite-site/browser .
 
 # change the back and run start script
 EXPOSE 80
