@@ -1,6 +1,6 @@
 FROM node:alpine3.18
-WORKDIR /app
-COPY ./backend ./backend/
+WORKDIR /backend
+COPY /backend ./backend/
 RUN pwd
 RUN npm install
 EXPOSE 4000
