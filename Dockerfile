@@ -4,20 +4,18 @@ WORKDIR /app
 COPY . ./
 WORKDIR /backend
 COPY ./backend/ ./
-RUN ls
 RUN npm install
 
 # Frontend build
 FROM node:20-alpine as frontend
 WORKDIR /frontend
 COPY ./frontend/ ./ 
+RUN ls
 RUN npm ci
 RUN npm run build
 
 #serve the angular app
 FROM nginx:1.23-alpine
-WORKDIR /usr/share/nginx/html
-RUN sudo rm -rf *
 
 #copy built angular
 COPY --from=frontend ./frontend/dist/elite-site/browser /usr/share/nginx/html/
