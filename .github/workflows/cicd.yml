@@ -29,4 +29,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f elite-app-container
       - name: Run docker container
-        run: docker run -d -p 4000:4000 -p 4200:4200 --name elite-app-container codermullins/elite-site
+        run: docker run -d -p 4000:4000 --name elite-app-container codermullins/elite-site
