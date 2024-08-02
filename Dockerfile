@@ -1,7 +1,7 @@
 FROM node:alpine3.18
-WORKDIR /backend
-COPY ./backend/package.json /backend/
+WORKDIR /app
+COPY ./backend/package.json ./backend/
 RUN npm install
 COPY ./backend/ /backend/
 EXPOSE 4000
-CMD ["node", "server"]
+CMD ["cd", "/backend", "node", "server"]
