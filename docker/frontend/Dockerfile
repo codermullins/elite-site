@@ -1,14 +1,3 @@
-# Server build
-FROM node:alpine3.18
-WORKDIR /app
-COPY . ./
-WORKDIR /backend
-COPY ./backend/ ./
-RUN ls
-RUN npm install
-EXPOSE 4000
-CMD ["npm run start"]
-
 # Frontend build
 FROM node:20-alpine as frontend
 WORKDIR /frontend
