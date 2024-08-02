@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server"
+    "start": "npm run server && npm run client",
+    "server": "node server",
+    "client": "ng serve"
   },
   "keywords": [],
   "author": "",
