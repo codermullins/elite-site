@@ -6,6 +6,7 @@ WORKDIR /backend
 COPY ./backend/ ./
 RUN ls
 RUN npm install
+CMD ["npm run start"]
 
 # Frontend build
 FROM node:20-alpine as frontend
@@ -26,4 +27,4 @@ COPY --from=frontend ./frontend/dist/elite-site/browser /usr/share/nginx/html/
 WORKDIR /backend
 RUN pwd
 EXPOSE 4000 80
-CMD npm run start
+CMD ["nginx", "-g", "daemon off;"]
