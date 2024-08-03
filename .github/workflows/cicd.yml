@@ -15,8 +15,8 @@ jobs:
         run: echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
       - name: Login to docker
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build Docker Image
-        run: docker build -t codermullins/elite-site .
+      - name: Build Server Docker Image
+        run: docker build -t codermullins/elite-site -f docker/Dockerfile
       - name: Publish image to docker hub
         run: docker push codermullins/elite-site:latest
 
