@@ -4,8 +4,9 @@ WORKDIR /app
 COPY . ./ 
 WORKDIR /frontend
 COPY ./frontend ./
+RUN ls
 RUN npm install
-RUN ng build
+RUN npm run build
 
 #serve the angular app
 FROM nginx:1.23-alpine
