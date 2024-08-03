@@ -3,19 +3,16 @@ FROM node:20-alpine as frontend
 WORKDIR /app
 COPY . ./ 
 WORKDIR /frontend
-RUN ls
 COPY ./frontend ./
 RUN npm install
-RUN npm run build
+RUN ng build
 
 #serve the angular app
-FROM nginx
+FROM nginx:1.23-alpine
 WORKDIR /usr/share/nginx/html
 RUN rm -rf *
 
 #copy built angular
-COPY --from=frontend ./frontend/dist/elite-site/browser .
-
-# change the back and run start script
+COPY --from=frontend ./dist/elite-site/browser .
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
