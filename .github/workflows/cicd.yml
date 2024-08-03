@@ -16,17 +16,17 @@ jobs:
       - name: Login to docker
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Server Docker Image
-        run: docker build . -t codermullins/elite-site -f backend/Dockerfile
+        run: docker build . -t codermullins/elite-api -f backend/Dockerfile
       - name: Publish image to docker hub
-        run: docker push codermullins/elite-site:latest
+        run: docker push codermullins/elite-api:latest
 
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
       - name: Pull image from docker hub
-        run: docker pull codermullins/elite-site:latest
+        run: docker pull codermullins/elite-api:latest
       - name: Delete old container
         run: docker rm -f elite-app-container
       - name: Run docker container
-        run: docker run -d -p 4000:4000 --name elite-app-container codermullins/elite-site
+        run: docker run -d -p 4000:4000 --name elite-app-container codermullins/elite-api
