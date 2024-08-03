@@ -2,8 +2,9 @@
 FROM node:20-alpine as frontend
 WORKDIR /app
 COPY . ./ 
-RUN ls
 WORKDIR /frontend
+RUN ls
+COPY ./frontend ./
 RUN npm install
 RUN npm run build
 
