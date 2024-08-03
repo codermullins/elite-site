@@ -3,7 +3,7 @@ FROM node:20-alpine as frontend
 WORKDIR /app
 COPY . ./ 
 WORKDIR /frontend
-RUN npm ci
+RUN npm install
 RUN npm run build
 
 #serve the angular app
