@@ -15,10 +15,14 @@ jobs:
         run: echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
       - name: Login to docker
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build Server Docker Image
+      - name: Build API Docker Image
         run: docker build . -t codermullins/elite-api -f backend/Dockerfile
       - name: Publish image to docker hub
         run: docker push codermullins/elite-api:latest
+      - name: Build Site Docker Image
+        run: docker build . -t codermullins/elite-site -f frontend/Dockerfile
+      - name: Publish image to docker hub
+        run: docker push codermullins/elite-site:latest
 
   deploy:
     needs: build
@@ -30,3 +34,9 @@ jobs:
         run: docker rm -f elite-app-container
       - name: Run docker container
         run: docker run -d -p 4000:4000 --name elite-app-container codermullins/elite-api
+      - name: Pull image from docker hub
+        run: docker pull codermullins/elite-site:latest
+      - name: Delete old container
+        run: docker rm -f elite-app-site-container
+      - name: Run docker container
+        run: docker run -d -p 4200:80 --name elite-app-site-container codermullins/elite-site
