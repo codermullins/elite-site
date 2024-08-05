@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private apiUrl = 'ec2-44-203-196-245.compute-1.amazonaws.com:4000'
+  private apiUrl = 'http://ec2-44-203-196-245.compute-1.amazonaws.com:4000'
 
   constructor(private http: HttpClient) {}
   getProducts() {
