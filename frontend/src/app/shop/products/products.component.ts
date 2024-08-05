@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core'
 import { ApiService } from '../../api.service'
 import { CommonModule } from '@angular/common'
-import { Observable, map } from 'rxjs'
+import { FormsModule } from '@angular/forms'
+import { RouterLink } from '@angular/router'
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
 export class ProductsComponent implements OnInit {
   productList: any = []
+  productObj: any = {}
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
@@ -22,5 +24,26 @@ export class ProductsComponent implements OnInit {
     this.apiService.getProducts().subscribe((data) => {
       this.productList = data
     })
+  }
+
+  onSave() {
+    this.apiService.addProduct(this.productObj).subscribe((res: any) => {
+      if(res) {
+        this.getAllProducts()
+        console.log(res)
+      } else {
+        alert("Product Not added")
+      }
+    })
+  }
+
+  delProduct(id:any) {
+    this.apiService.removeProduct(id).subscribe((res: any) => {
+      if(res){
+        this.getAllProducts()
+        console.log(res)
+      }
+    })
+    
   }
 }

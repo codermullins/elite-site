@@ -24,7 +24,12 @@ mongoose
   });
 app.use(cors());
 app.use(express.json());
-app.use("/getProducts", productRoutes);
+//Products Routes
+app.use("/products", productRoutes);
+app.use("/products/addProducts", productRoutes);
+app.use("/products/delete", productRoutes);
+
+//User Routes
 app.use("/users", userRoutes);
 
 app.listen(port, () => {

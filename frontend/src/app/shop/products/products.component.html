@@ -1,27 +1,75 @@
 <div class="row">
   <div class="col-8">
-    <div class="card">
+    <div class="card text-center">
       <div class="card-header">
         <div class="row">
-          <div class="col-6" >
-            Products List
-          </div>
+          <div class="col-12">Products List</div>
         </div>
       </div>
-      <div class="card-body" >
+      <div class="card-body">
         <div class="row">
           <div class="col-3" *ngFor="let item of productList">
             <div class="card">
-              <img class="card-img-top" style="height: 12rem;" [src]="item.imageUrl" alt="Product Image"  >
+              <img
+                class="card-img-top"
+                style="height: 12rem"
+                [src]="item.imageUrl"
+                alt="Product Image"
+                routerLink="/shop/product-details/{{ item._id }}"
+              />
               <div class="card-body">
                 <h4 class="card-title">
-                  {{item.productName}}
+                  {{ item.productName }}
                 </h4>
-                <p class="card-text">{{item.description}}</p>
-                <h4>{{item.price}}</h4>
-                <div class="btn">Add</div>
-
+                <p class="card-text">{{ item.description }}</p>
+                <h4>{{ item.price }}</h4>
+                <button class="btn btn-primary">Add To Cart</button>
+                <button class="btn btn-danger" (click)="delProduct(item._id)">
+                  <i class="fas fa-trash"></i>
+                </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-6">New Product</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <label for="">Product Name </label>
+              <input
+                type="text"
+                [(ngModel)]="productObj.productName"
+                class="form-control"
+              />
+              <label for="">Category </label>
+              <input type="text" [(ngModel)]="productObj.category" class="form-control" />
+              <label for="">Description </label>
+              <input
+                type="text"
+                [(ngModel)]="productObj.description"
+                class="form-control"
+              />
+              <label for="">Quantitiy</label>
+              <input type="text" [(ngModel)]="productObj.quantity" class="form-control" />
+              <label for="">Price </label>
+              <input type="text" [(ngModel)]="productObj.price" class="form-control" />
+              <label for="">Image</label>
+              <input type="text" [(ngModel)]="productObj.imageUrl" class="form-control" />
+              <label for="">Sizes</label>
+              <input type="text" [(ngModel)]="productObj.size" class="form-control" />
+              <button class="btn btn-primary form-control mt-5" (click)="onSave()">
+                Add Product
+              </button>
             </div>
           </div>
         </div>

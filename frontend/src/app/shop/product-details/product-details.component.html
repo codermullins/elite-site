@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-8 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-12 text-center">
+            <strong>{{ productData.productName }}</strong>
+          </div>
+          <img
+            class="card-img-top mx-auto d-block"
+            style="height: 12rem"
+            [src]="productData.imageUrl"
+            alt="Product Image"
+          />
+          <div class="card-body">
+            <p class="card-text">
+              {{ productData.description }}
+            </p>
+            <h4>{{ productData.price }}</h4>
+            <div *ngFor="let item of productData.size; index as i">
+              <button>{{ item }}</button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary"><i class="fas fa-edit"></i> Edit Item</button>
+      </div>
+    </div>
+  </div>
+</div>

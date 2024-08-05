@@ -8,6 +8,8 @@ import { LayoutComponent } from './admin/layout/layout.component'
 import { LoginComponent } from './admin/login/login.component'
 import { ProductsComponent } from './shop/products/products.component'
 import { Routes } from '@angular/router'
+import { ProductDetailsComponent } from './shop/product-details/product-details.component'
+import { CustomerCartComponent } from './shop/customer-cart/customer-cart.component'
 
 export const routes: Routes = [
   {
@@ -47,6 +49,14 @@ export const routes: Routes = [
         path: 'contact',
         component: ContactComponent,
       },
+      {
+        path: 'shop/product-details/:id',
+        component: ProductDetailsComponent
+      },
+      {
+        path: 'shop/customer-cart',
+        component: CustomerCartComponent
+      }
     ],
   },
 ]
