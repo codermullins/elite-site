@@ -12,6 +12,6 @@ WORKDIR /usr/share/nginx/html/
 RUN rm -rf *
 
 #copy built angular
-COPY --from=frontend ./frontend/dist/elite-site/browser /usr/share/nginx/html/
+COPY --from=frontend app/dist/elite-site/browser /usr/share/nginx/html/
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
