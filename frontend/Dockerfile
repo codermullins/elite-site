@@ -13,6 +13,6 @@ COPY frontend/nginx.conf /etc/nginx/nginx.conf
 
 
 #copy built angular
-COPY --from=frontend /app/dist/elite-site /usr/share/nginx/html/
+COPY --from=frontend /app/dist/elite-site /usr/share/nginx/html
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
