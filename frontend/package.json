@@ -6,21 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "style": "import-sort -l \"**/{src,tests,e2e}/**/*.ts\" && prettier --check \"**/{src,tests,e2e}/**/*.{*css,ts}\"",
-    "style:fix": "import-sort --write \"**/{src,tests,e2e}/**/*.ts\" && prettier --write \"**/{src,tests,e2e}/**/*.{*css,ts}\" && js-beautify \"**/src/**/*.html\"",
-    "lint": "run-p lint:ts lint:tsc",
-    "lint:fix": "run-s lint:ts:fix lint:tsc",
-    "lint:ts": "tslint --config tslint.json --project . -e \"**/{test,polyfills}.ts\"",
-    "lint:ts:fix": "tslint --config tslint.json --fix --project . -e \"**/{test,polyfills}.ts\"",
-    "lint:tsc": "tsc --noEmit --skipLibCheck",
-    "init:env": "init-dev-env generate-dot-env example.env -f",
-    "aws:login:win": "cross-conf-env aws ecr get-login --no-include-email --region $npm_package_config_awsRegion > dockerLogin.cmd && call dockerLogin.cmd && del dockerLogin.cmd",
-    "aws:login:mac": "eval $(aws ecr get-login --no-include-email --region $npm_package_config_awsRegion)",
-    "aws:login": "run-p -cs aws:login:win aws:login:mac",
-    "aws:deploy": "cross-conf-env docker run --env-file ./.env silintl/ecs-deploy -c $npm_package_config_awsEcsCluster -n $npm_package_config_awsService -i $npm_package_config_imageRepo:latest -r $npm_package_config_awsRegion --timeout 1000",
-    "aws:release": "run-s -cs aws:login docker:publish aws:deploy",
-    "aws:publish:compose": "cross-conf-env ecs-cli compose --file docker-compose.aws.yml -p $npm_package_name -c $npm_package_config_awsEcsCluster -r $npm_package_config_awsRegion create"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {

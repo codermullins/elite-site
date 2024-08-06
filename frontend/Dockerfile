@@ -1,18 +1,14 @@
 # Frontend build
-FROM node:18-alpine as frontend
+FROM node:18.17.1-alpine as build
 WORKDIR /app
-COPY ./frontend ./ 
-RUN pwd
-RUN ls
+COPY ./frontend/package*.json ./ 
 RUN npm ci
+COPY ./frontend .
 RUN npm run build
 
 #serve the angular app
 FROM nginx:latest
-COPY ./frontend/nginx.conf /etc/nginx/nginx.conf
-
-
 #copy built angular
-COPY --from=frontend /app/dist/elite-site /usr/share/nginx/html
-EXPOSE 4200
+COPY --from=build /app/elite-site /usr/share/nginx/html
+EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
