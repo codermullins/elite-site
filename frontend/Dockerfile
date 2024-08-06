@@ -13,6 +13,6 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf *
 #copy built angular
 COPY --from=build /app/dist/elite-site/browser /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY /nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
