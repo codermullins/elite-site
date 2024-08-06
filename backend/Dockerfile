@@ -1,9 +1,10 @@
 # Server build
 FROM node:alpine3.18
 WORKDIR /app
-COPY . ./
-WORKDIR /backend
-COPY ./backend/ ./
+COPY ./backend/package*.json ./
+RUN ls
 RUN npm install
+COPY ./backend/ ./
+RUN ls
 EXPOSE 4000
 CMD node server
