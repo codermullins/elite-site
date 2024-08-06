@@ -20,7 +20,7 @@ jobs:
       # - name: Publish image to docker hub
       #   run: docker push codermullins/elite-api:latest
       - name: Build Site Docker Image
-        run: docker build . -t codermullins/elite-site -f frontend/Dockerfile
+        run: docker build -t codermullins/elite-site frontend/Dockerfile
       - name: Publish image to docker hub
         run: docker push codermullins/elite-site:latest
 
