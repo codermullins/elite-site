@@ -2,8 +2,9 @@
 FROM node:18.17.1-alpine as build
 WORKDIR /app
 COPY ./frontend/package*.json ./ 
-RUN npm ci
+RUN npm install
 COPY ./frontend .
+RUN ls
 RUN npm run build
 
 #serve the angular app
