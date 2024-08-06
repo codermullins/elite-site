@@ -20,7 +20,7 @@ jobs:
       # - name: Publish image to docker hub
       #   run: docker push codermullins/elite-api:latest
       - name: Build Site Docker Image
-        run: docker build -t codermullins/elite-site frontend/Dockerfile
+        run: docker build . -t codermullins/elite-site -f frontend/Dockerfile
       - name: Publish image to docker hub
         run: docker push codermullins/elite-site:latest
 
@@ -39,4 +39,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f elite-app-site-container
       - name: Run docker container
-        run: docker run -d -p 4200:80 --name elite-app-site-container codermullins/elite-site
+        run: docker run -d -p 4200:4200 --name elite-app-site-container codermullins/elite-site
