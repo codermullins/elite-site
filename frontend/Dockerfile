@@ -1,5 +1,5 @@
 # Frontend build
-FROM node:20-alpine as frontend
+FROM node:18-alpine as frontend
 WORKDIR /app
 COPY ./frontend ./ 
 RUN pwd
