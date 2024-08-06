@@ -9,7 +9,7 @@ RUN npm run build
 
 #serve the angular app
 FROM nginx:latest
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY /nginx.conf /etc/nginx/nginx.conf
 
 
 #copy built angular
