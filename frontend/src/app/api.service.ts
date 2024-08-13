@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core'
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  // private apiUrl = 'http://ec2-34-207-57-25.compute-1.amazonaws.com:4000'
-  private apiUrl = 'http://localhost:4000'
+  private apiUrl = 'http://ec2-34-207-57-25.compute-1.amazonaws.com:4000'
+  // private apiUrl = 'http://localhost:4000'
   constructor(private http: HttpClient) {}
 
   /**block for Product page api calls */
