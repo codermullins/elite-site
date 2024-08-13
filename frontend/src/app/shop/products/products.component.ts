@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+
 import { ApiService } from '../../api.service'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
@@ -44,6 +45,22 @@ export class ProductsComponent implements OnInit {
         console.log(res)
       }
     })
-    
   }
+
+  addToCart(obj: any) {
+    this.apiService.addToCart(obj).subscribe((res: any) => {
+      console.log(obj)
+      if(res){
+        alert("added to cart")
+      }
+    })
+  }
+
+  // registerUser(): void {
+  //   this.apiService.show<User>(CustomersComponent, {
+  //     title: 'Register'
+  //   }).result().subscribe(newUser => {
+  //     this.users?.push(newUser)
+  //   })
+  // }
 }

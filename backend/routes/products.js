@@ -1,47 +1,52 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/product");
-const { ObjectId } = require("mongoose");
+const shopCon = require("../controllers/shopController");
+const adminCont = require("../controllers/adminController");
 
 //Get all products
-router.get("/", async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.json(products);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+router.get("/", shopCon.getProducts);
 
 // add a product
-router.post("/addProduct", async (req, res) => {
-  const product = new Product({
-    productName: req.body.productName,
-    description: req.body.description,
-    category: req.body.category,
-    quantity: req.body.quantity,
-    size: req.body.size,
-    price: req.body.price,
-  });
-  await product.save();
-  res.status(201).json(product);
-});
+router.post("/addProduct", adminCont.postAddProduct);
 
 // Get a product
-router.get("/getProduct/:id", async (req, res) => {
-  const product = await Product.findOne({ _id: req.params.id });
-  res.send(product);
-});
+router.get("/getProduct/:id", shopCon.getProduct);
 
 // Update by ID Method
-router.patch("/update/:id", (req, res) => {
-  res.send("Update by ID API");
-});
+router.put("/update/:id", adminCont.postUpdateProduct);
+// router.put("/update/:id", async (req, res) => {
+//   const product = await Product.findByIdAndUpdate(
+//     req.params.id,
+//     {
+//       $set: {
+//         productName: req.body.productName,
+//         category: req.body.category,
+//         description: req.body.description,
+//         price: req.body.price,
+//       },
+//     },
+//     { new: true }
+//   );
+//   res.json(product);
+// });
 
 // Delete by ID Method
-router.delete("/delete/:id", async (req, res) => {
-  await Product.deleteOne({ _id: req.params.id });
-  res.status(201).json("Item Deleted");
-});
+router.delete("/delete/:id", adminCont.deleteProduct);
+
+// add a product to cart
+router.post("/addtocart", shopCon.addCart);
+
+//get all items in cart
+router.get("/getCart", shopCon.getCart);
+
+//delete an item in the cart
+router.post("/removeFromCart", shopCon.postItemDelete);
+
+//add cart to orders
+router.post("/addToOrder", shopCon.postOrder);
+
+//get the orders
+router.get("/getOrder", shopCon.getOrder);
 
 module.exports = router;

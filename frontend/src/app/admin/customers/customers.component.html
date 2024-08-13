@@ -1,1 +1,69 @@
-<p>customers works!</p>
+<div class="row">
+  <div class="col-4 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-12 text-center">
+            <strong>Register</strong>
+          </div>
+          <div class="card-body text-center">
+            <form>
+              <div class="row col-6">
+                <label>Name</label>
+                <input
+                  type="text"
+                  [(ngModel)]="userObj.name"
+                  class="form-control"
+                  name="name"
+                />
+              </div>
+              <div class="row col-6">
+                <label>Address</label>
+                <input
+                  type="text"
+                  [(ngModel)]="userObj.address"
+                  class="form-control"
+                  name="address"
+                />
+              </div>
+              <div class="row col-6">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  [(ngModel)]="userObj.phone"
+                  class="form-control"
+                  name="phone"
+                />
+              </div>
+              <div class="row col-6">
+                <label>Email</label>
+                <input
+                  type="text"
+                  [(ngModel)]="userObj.email"
+                  class="form-control"
+                  name="email"
+                />
+              </div>
+              <div class="row col-6">
+                <label>Password</label>
+                <input
+                  type="password"
+                  [(ngModel)]="userObj.password"
+                  class="form-control"
+                  name="password"
+                />
+              </div>
+              <div class="row col-6">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <p>Already have an account?<a href="/login">Log in Here</a></p>
+
+        <button class="btn btn-primary" (click)="addUser()">Register</button>
+      </div>
+    </div>
+  </div>
+</div>

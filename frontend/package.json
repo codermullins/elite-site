@@ -49,14 +49,5 @@
       "style": "module",
       "options": {}
     }
-  },
-  "config": {
-    "imageRepo": "[namespace]/[repository]",
-    "imageName": "custom_app_name",
-    "imagePort": "3000",
-    "internalContainerPort": "3000",
-    "awsRegion": "your_aws_region",
-    "awsEcsCluster": "your_ecs_cluster_name",
-    "awsService": "your_apps_ecs_service_name"
   }
 }

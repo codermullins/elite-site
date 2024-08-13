@@ -8,23 +8,25 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-3" *ngFor="let item of productList">
+          <div class="col-3" *ngFor="let product of productList">
             <div class="card">
               <img
                 class="card-img-top"
                 style="height: 12rem"
-                [src]="item.imageUrl"
+                [src]="product.imageUrl"
                 alt="Product Image"
-                routerLink="/shop/product-details/{{ item._id }}"
+                routerLink="/shop/product-details/{{ product._id }}"
               />
               <div class="card-body">
                 <h4 class="card-title">
-                  {{ item.productName }}
+                  {{ product.productName }}
                 </h4>
-                <p class="card-text">{{ item.description }}</p>
-                <h4>{{ item.price }}</h4>
-                <button class="btn btn-primary">Add To Cart</button>
-                <button class="btn btn-danger" (click)="delProduct(item._id)">
+                <p class="card-text">{{ product.description }}</p>
+                <h4>{{ product.price }}</h4>
+                <button class="btn btn-primary" (click)="addToCart(product)">
+                  Add To Cart
+                </button>
+                <button class="btn btn-danger" (click)="delProduct(product._id)">
                   <i class="fas fa-trash"></i>
                 </button>
               </div>
@@ -50,6 +52,7 @@
                 type="text"
                 [(ngModel)]="productObj.productName"
                 class="form-control"
+                name="productName"
               />
               <label for="">Category </label>
               <input type="text" [(ngModel)]="productObj.category" class="form-control" />
@@ -59,7 +62,7 @@
                 [(ngModel)]="productObj.description"
                 class="form-control"
               />
-              <label for="">Quantitiy</label>
+              <label for="">Quantity</label>
               <input type="text" [(ngModel)]="productObj.quantity" class="form-control" />
               <label for="">Price </label>
               <input type="text" [(ngModel)]="productObj.price" class="form-control" />

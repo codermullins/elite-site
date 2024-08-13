@@ -6,6 +6,7 @@ const userRoutes = require("./routes/users");
 const app = express();
 const port = 4000;
 const dotenv = require("dotenv");
+const User = require("./models/user");
 
 dotenv.config();
 
@@ -13,10 +14,22 @@ const password = encodeURIComponent(process.env.MONGO_PASSWORD.trim());
 
 mongoose
   .connect(
-    `mongodb+srv://mrchrismullins:${password}@elitecluster.grputig.mongodb.net/?retryWrites=true&w=majority&appName=EliteCluster`,
-    {}
+    `mongodb+srv://mrchrismullins:${password}@elitecluster.grputig.mongodb.net/?retryWrites=true&w=majority&appName=EliteCluster`
   )
-  .then(() => {
+  .then((results) => {
+    User.findOne().then((user) => {
+      if (!user) {
+        const user = new User({
+          name: "Chris",
+          email: "mrchrismullins@gmail.com",
+          password: "Madness08",
+          cart: {
+            items: [],
+          },
+        });
+        user.save();
+      }
+    });
     console.log("Connected to Mongo");
   })
   .catch((error) => {
@@ -24,10 +37,18 @@ mongoose
   });
 app.use(cors());
 app.use(express.json());
+
+app.use((req, res, next) => {
+  User.findById("66bb615c3fad7d790ecd59a0")
+    .then((user) => {
+      req.user = user;
+      next();
+    })
+    .catch((err) => console.log(err));
+});
+
 //Products Routes
 app.use("/products", productRoutes);
-app.use("/products/addProducts", productRoutes);
-app.use("/products/delete", productRoutes);
 
 //User Routes
 app.use("/users", userRoutes);

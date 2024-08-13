@@ -1,15 +1,16 @@
 import { AboutComponent } from './website/about/about.component'
-import { CategoryComponent } from './admin/category/category.component'
+import { CartComponent } from './admin/cart/cart.component'
 import { ContactComponent } from './website/contact/contact.component'
+import { CustomersComponent } from './admin/customers/customers.component';
 import { EventsComponent } from './website/events/events.component'
 import { JoinComponent } from './website/join/join.component'
 import { LandingPageComponent } from './website/landing-page/landing-page.component'
 import { LayoutComponent } from './admin/layout/layout.component'
 import { LoginComponent } from './admin/login/login.component'
+import { OrdersComponent } from './admin/orders/orders.component'
+import { ProductDetailsComponent } from './shop/product-details/product-details.component'
 import { ProductsComponent } from './shop/products/products.component'
 import { Routes } from '@angular/router'
-import { ProductDetailsComponent } from './shop/product-details/product-details.component'
-import { CustomerCartComponent } from './shop/customer-cart/customer-cart.component'
 
 export const routes: Routes = [
   {
@@ -17,10 +18,7 @@ export const routes: Routes = [
     redirectTo: 'landing-page',
     pathMatch: 'full',
   },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
+
   {
     path: '',
     component: LayoutComponent,
@@ -53,9 +51,22 @@ export const routes: Routes = [
         path: 'shop/product-details/:id',
         component: ProductDetailsComponent
       },
+
       {
-        path: 'shop/customer-cart',
-        component: CustomerCartComponent
+        path: 'customers',
+        component: CustomersComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'cart',
+        component: CartComponent
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent
       }
     ],
   },

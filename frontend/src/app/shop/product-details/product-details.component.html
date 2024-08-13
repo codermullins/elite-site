@@ -22,7 +22,73 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-primary"><i class="fas fa-edit"></i> Edit Item</button>
+        <button class="btn btn-primary" (click)="updateProduct(productData)">
+          <i class="fas fa-edit"></i> Edit Item
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-4" *ngIf="isEdit">
+    <div class="card">
+      <div class="card-header">
+        <div class="row mr-0">
+          <div class="col-10">Edit Product</div>
+          <button class="col-2 text-center" (click)="closeEdit()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <label for="">Product Name </label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="productData.productName"
+              />
+              <label for="">Category </label>
+              <input
+                type="text"
+                [(ngModel)]="productData.category"
+                class="form-control"
+              />
+              <label for="">Description </label>
+              <input
+                type="text"
+                [(ngModel)]="productData.description"
+                class="form-control"
+              />
+              <label for="">Quantity</label>
+              <input
+                type="text"
+                [(ngModel)]="productData.quantity"
+                class="form-control"
+              />
+              <label for="">Price </label>
+              <input type="text" [(ngModel)]="productData.price" class="form-control" />
+              <label for="">Image</label>
+              <input
+                type="text"
+                [(ngModel)]="productData.imageUrl"
+                class="form-control"
+              />
+              <label for="">Sizes</label>
+              <input type="text" [(ngModel)]="productData.size" class="form-control" />
+              <button class="btn btn-primary form-control mt-5" (click)="onUpdate()">
+                Update Product
+              </button>
+              <button
+                class="btn btn-danger"
+                (click)="delProduct(productData._id)"
+                routerLink="/shop/products"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

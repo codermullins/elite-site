@@ -1,1 +1,20 @@
-<p>cart works!</p>
+<div class="row">
+  <div *ngFor="let product of cartObj; trackBy: cartObj.productId">
+    <div *ngIf="product">
+      <div class="row">
+        <div class="col-3">
+          {{ product.productId.productName }}
+        </div>
+        <div class="col-3">{{ product.quantity }}</div>
+
+        <button class="col-3" (click)="deleteItem(product.productId)">Delete Item</button>
+      </div>
+      <div *ngIf="!product">
+        <h1>No Items in Cart</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button (click)="checkout(cartObj)" routerLink="/orders">Checkout</button>
+  </div>
+</div>
