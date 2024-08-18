@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
   productList: any = []
   productObj: any = {}
   constructor(private apiService: ApiService) {}
-  isAdmin: boolean = false
+  isAdmin: boolean = true
   searchProduct: any
   searchTerm!: String
 
