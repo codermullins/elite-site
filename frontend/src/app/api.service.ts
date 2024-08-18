@@ -62,4 +62,26 @@ export class ApiService {
   getOrder(obj: any){
     return this.http.get(this.apiUrl + "/products/getOrder", obj)
   }
+
+  /**Block to handle Event call */
+  getAllEvent() {
+    return this.http.get(this.apiUrl + "/events/getAllEvents")
+  }
+
+  addEvent(obj: any) {
+    return this.http.post(this.apiUrl + "/events/addEvent/", obj)
+  }
+
+  removeEvent(id: any) {
+    return this.http.delete(this.apiUrl + `/events/deleteEvent/${id}`)
+  }
+
+  editEvent(id: any, obj: any){
+    return this.http.put(this.apiUrl + `/events/updateEvent/${id}`, obj)
+  }
+
+  getEvent(id: any) {
+    return this.http.get(this.apiUrl + `/events/getEvent/${id}`)
+  }
+
 }

@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/products");
 const userRoutes = require("./routes/users");
+const eventsRoute = require("./routes/events");
 const app = express();
 const port = 4000;
 const dotenv = require("dotenv");
@@ -52,6 +53,9 @@ app.use("/products", productRoutes);
 
 //User Routes
 app.use("/users", userRoutes);
+
+//Events Routes
+app.use("/events", eventsRoute);
 
 app.listen(port, () => {
   console.log(`Server running on port:${port}`);

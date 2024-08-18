@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   cartObj: any = []
+  count: Number = 0
 
   ngOnInit(): void {
       this.loadCart()
@@ -25,15 +26,19 @@ export class CartComponent implements OnInit {
   loadCart(){
     this.apiService.getCart(this.cartObj).subscribe((res) => {
       this.cartObj = res
+
     })
   }
 
   deleteItem(id: any){
-    console.log(id)
-    this.apiService.deleteCartItem(id).subscribe((res) => {
+    this.apiService.deleteCartItem(id).subscribe((res: any) => {
       if(res){
+        console.log("Item Deleted")
+        alert("Item removed")
         this.loadCart()
       }
+        
+
     })
   }
 

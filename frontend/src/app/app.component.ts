@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Pipe } from '@angular/core'
 import { RouterLink, RouterOutlet } from '@angular/router'
 
 import { ApiService } from './api.service'
@@ -12,4 +12,5 @@ import { ApiService } from './api.service'
 })
 export class AppComponent {
   title = 'elite-site'
+
 }

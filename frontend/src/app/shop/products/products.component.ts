@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Pipe } from '@angular/core'
 
 import { ApiService } from '../../api.service'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { RouterLink } from '@angular/router'
+import { SearchPipe } from '../../search.pipe'
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, SearchPipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
@@ -16,6 +17,9 @@ export class ProductsComponent implements OnInit {
   productList: any = []
   productObj: any = {}
   constructor(private apiService: ApiService) {}
+  isAdmin: boolean = false
+  searchProduct: any
+  searchTerm!: String
 
   ngOnInit(): void {
     this.getAllProducts()
@@ -56,11 +60,9 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  // registerUser(): void {
-  //   this.apiService.show<User>(CustomersComponent, {
-  //     title: 'Register'
-  //   }).result().subscribe(newUser => {
-  //     this.users?.push(newUser)
-  //   })
-  // }
+  search(product: string) {
+    this.productList = this.searchProduct.filter((value: any) => 
+    value.body.toLowerCase().includes(this.productList))
+  }
+
 }

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row py-5">
   <div class="col-4 mx-auto">
     <div class="card">
       <div class="card-header">
@@ -8,31 +8,30 @@
           </div>
           <div class="card-body text-center">
             <form (ngSubmit)="getUser()">
-              <div class="row col-6">
-                <label>Email</label>
-                <input
-                  type="text"
-                  [(ngModel)]="userObj.email"
-                  class="form-control"
-                  name="email"
-                  required="true"
-                />
-              </div>
-              <div class="row col-6">
-                <label>Password</label>
-                <input
-                  type="password"
-                  [(ngModel)]="userObj.password"
-                  class="form-control"
-                  name="password"
-                  required="true"
-                />
-              </div>
+              <label>Email</label>
+              <input
+                type="text"
+                [(ngModel)]="userObj.email"
+                class="form-control"
+                name="email"
+                required="true"
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                [(ngModel)]="userObj.password"
+                class="form-control"
+                name="password"
+                required="true"
+              />
             </form>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" (click)="getUser()">Login</button>
-        <button class="btn btn-primary" routerLink="/customers">Register</button>
+
+        <button class="btn btn-primary col-12 mb-3" type="submit" (click)="getUser()">
+          Login
+        </button>
+        <p>Don't have an account Register <a routerLink="/customers">Here</a></p>
       </div>
     </div>
   </div>

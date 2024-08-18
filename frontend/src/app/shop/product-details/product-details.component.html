@@ -8,7 +8,7 @@
           </div>
           <img
             class="card-img-top mx-auto d-block"
-            style="height: 12rem"
+            style="height: 15rem; width: 20rem"
             [src]="productData.imageUrl"
             alt="Product Image"
           />
@@ -16,8 +16,9 @@
             <p class="card-text">
               {{ productData.description }}
             </p>
-            <h4>{{ productData.price }}</h4>
-            <div *ngFor="let item of productData.size; index as i">
+            <h4>${{ productData.price }}</h4>
+            <p>Sizes Available:</p>
+            <div *ngFor="let item of productData.size; keyvalue">
               <button>{{ item }}</button>
             </div>
           </div>
@@ -28,6 +29,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Section for the edit product only seen when admin -->
   <div class="col-4" *ngIf="isEdit">
     <div class="card">
       <div class="card-header">

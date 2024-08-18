@@ -8,6 +8,10 @@
   width: 25%;
 }
 
+#productCard {
+  min-height: 100%;
+}
+
 #footer {
   /* position: absolute; */
   bottom: 0;

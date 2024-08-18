@@ -1,34 +1,82 @@
+<div class="row text-center p-3">
+  <h1>Shop Gear</h1>
+</div>
+<div class="container-fluid col-12">
+  <ul class="text-center list-inline">
+    <li class="list-inline-item">
+      <a (click)="search('Shoes')">Shoes</a>
+    </li>
+    <li class="list-inline-item">
+      <a>Headgear</a>
+    </li>
+    <li class="list-inline-item">
+      <a>Shorts</a>
+    </li>
+    <li class="list-inline-item">
+      <a>Shirts</a>
+    </li>
+    <div>
+      <input
+        type="text"
+        name="searchTerm"
+        placeholder="Search"
+        class="mx-1"
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+  </ul>
+</div>
 <div class="row">
-  <div class="col-8">
+  <div class="col-8 mx-auto pb-5">
     <div class="card text-center">
       <div class="card-header">
         <div class="row">
           <div class="col-12">Products List</div>
         </div>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-3" *ngFor="let product of productList">
-            <div class="card">
-              <img
-                class="card-img-top"
-                style="height: 12rem"
-                [src]="product.imageUrl"
-                alt="Product Image"
-                routerLink="/shop/product-details/{{ product._id }}"
-              />
-              <div class="card-body">
-                <h4 class="card-title">
-                  {{ product.productName }}
-                </h4>
-                <p class="card-text">{{ product.description }}</p>
-                <h4>{{ product.price }}</h4>
-                <button class="btn btn-primary" (click)="addToCart(product)">
-                  Add To Cart
-                </button>
-                <button class="btn btn-danger" (click)="delProduct(product._id)">
-                  <i class="fas fa-trash"></i>
-                </button>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div
+                class="col-lg-4 mb-3"
+                *ngFor="let product of productList | search : searchTerm; index as i"
+              >
+                <div class="card" id="productCard" *ngIf="product">
+                  <img
+                    class="card-img-top"
+                    style="height: 12rem"
+                    [src]="product.imageUrl"
+                    alt="Product Image"
+                    routerLink="/shop/product-details/{{ product._id }}"
+                  />
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      {{ product.productName }}
+                    </h4>
+                    <p class="card-text">{{ product.description }}</p>
+                    <h4>{{ product.price }}</h4>
+                    <p>{{ product.category }}</p>
+                  </div>
+                  <div class="card-footer">
+                    <button
+                      class="btn btn-primary inline m-1"
+                      (click)="addToCart(product)"
+                    >
+                      Add To Cart
+                    </button>
+                    <button
+                      class="btn btn-danger"
+                      (click)="delProduct(product._id)"
+                      *ngIf="isAdmin"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="product < 0">
+                  <h1>No Products to display!!!</h1>
+                </div>
               </div>
             </div>
           </div>
@@ -36,7 +84,9 @@
       </div>
     </div>
   </div>
-  <div class="col-4">
+
+  <!-- section for the add feature only displayed if admin -->
+  <div class="col-4" *ngIf="isAdmin">
     <div class="card">
       <div class="card-header">
         <div class="row">

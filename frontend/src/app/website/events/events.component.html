@@ -1,14 +1,77 @@
-<div class="row p-3 mx-auto">
-  <table class="border">
-    <tr>
-      <th>Event</th>
-      <th>Location</th>
-      <th>Date</th>
-    </tr>
-    <tr>
-      <td>Disney Duals</td>
-      <td>Orlando, FL</td>
-      <td>Dec 14 2024</td>
-    </tr>
-  </table>
+<div class="row text-center p-3">
+  <h1>Events</h1>
+</div>
+<div class="row">
+  <div class="container-fluid col-12">
+    <div class="row p-3 mx-auto mb-5" *ngIf="eventList">
+      <table class="border text-center">
+        <tr class="border">
+          <th>Event</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Event Site</th>
+        </tr>
+        <tr *ngFor="let event of eventList">
+          <td>{{ event.title }}</td>
+          <td>{{ event.location }}</td>
+          <td>{{ event.date }}</td>
+          <td>
+            <a href="{{ event.site }}">{{ event.site }}</a>
+          </td>
+          <button (click)="loadEvent(event._id)">Edit</button>
+          <button class="btn btn-danger my-3" (click)="onDelete(event._id)">
+            Delete
+          </button>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="!eventList">
+      <h1>There are not events Currently</h1>
+    </div>
+    <!-- section for the add feature only displayed if admin -->
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">New Event</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="card">
+              <div class="card-body">
+                <label for="">Event Name </label>
+                <input
+                  type="text"
+                  [(ngModel)]="eventObj.title"
+                  class="form-control"
+                  name="title"
+                />
+                <label for="">Location </label>
+                <input type="text" [(ngModel)]="eventObj.location" class="form-control" />
+                <label for="">date </label>
+                <input type="text" [(ngModel)]="eventObj.date" class="form-control" />
+                <label for="">Event Website</label>
+                <input type="text" [(ngModel)]="eventObj.site" class="form-control" />
+                <button
+                  class="btn btn-primary form-control mt-5"
+                  (click)="onUpdate()"
+                  *ngIf="isEdit"
+                >
+                  Edit Event
+                </button>
+                <button
+                  class="btn btn-primary form-control mt-5"
+                  (click)="onSave()"
+                  *ngIf="!isEdit"
+                >
+                  Add Event
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

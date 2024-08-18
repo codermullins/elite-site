@@ -15,21 +15,6 @@ router.get("/getProduct/:id", shopCon.getProduct);
 
 // Update by ID Method
 router.put("/update/:id", adminCont.postUpdateProduct);
-// router.put("/update/:id", async (req, res) => {
-//   const product = await Product.findByIdAndUpdate(
-//     req.params.id,
-//     {
-//       $set: {
-//         productName: req.body.productName,
-//         category: req.body.category,
-//         description: req.body.description,
-//         price: req.body.price,
-//       },
-//     },
-//     { new: true }
-//   );
-//   res.json(product);
-// });
 
 // Delete by ID Method
 router.delete("/delete/:id", adminCont.deleteProduct);

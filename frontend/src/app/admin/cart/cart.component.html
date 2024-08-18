@@ -1,12 +1,17 @@
-<div class="row">
+<div class="row m-5 fw-bold" *ngIf="cartObj">Your Cart : {{ cartObj.length }} Items</div>
+<div class="row m-5">
   <div *ngFor="let product of cartObj; trackBy: cartObj.productId">
     <div *ngIf="product">
-      <div class="row">
-        <div class="col-3">
-          {{ product.productId.productName }}
+      <div class="row border">
+        <div class="col-3 my-3 mx-1">
+          <div class="fw-bold">
+            {{ product.productId.productName }}
+          </div>
+          <div>
+            {{ product.productId.description }}
+          </div>
         </div>
         <div class="col-3">{{ product.quantity }}</div>
-
         <button class="col-3" (click)="deleteItem(product.productId)">Delete Item</button>
       </div>
       <div *ngIf="!product">
