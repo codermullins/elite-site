@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class EventsComponent implements OnInit {
 eventList: any = []
 eventObj: any = []
-isAdmin = false
+isAdmin = true
 isEdit = false
 
 constructor(private apiService: ApiService) {}
