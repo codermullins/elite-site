@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+
+onSubmit(){
+  alert("Email Sent to Elite Wrestling")
+}
+
 }

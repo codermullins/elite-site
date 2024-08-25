@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap';
 @import '@fortawesome/fontawesome-free/css/all.css';
+
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .logo {
   display: block;
   margin-left: auto;
@@ -12,13 +19,27 @@
   min-height: 100%;
 }
 
+
+
 #footer {
-  /* position: absolute; */
+  position: relative;
   bottom: 0;
   width: 100%;
+  background-color: beige;
 }
 
 .icon {
   height: 40px;
   width: 30px;
+}
+
+
+table, th, td {
+  border: 1px solid black;
+}
+table {
+  margin-top: 10px;
+}
+td {
+  padding: 10px;
 }

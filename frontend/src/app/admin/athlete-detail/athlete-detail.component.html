@@ -4,26 +4,22 @@
       <div class="card-header">
         <div class="row">
           <div class="col-12 text-center">
-            <strong>{{ productData.productName }}</strong>
+            <strong>{{ athleteData.athleteName }}</strong>
           </div>
           <img
             class="card-img-top mx-auto d-block"
             style="height: 15rem; width: 20rem"
-            [src]="productData.imageUrl"
             alt="Product Image"
           />
           <div class="card-body">
             <p class="card-text">
-              {{ productData.description }}
+              {{ athleteData.parentName }}
             </p>
-            <h4>${{ productData.price }}</h4>
-            <p>Sizes Available:</p>
-            <div *ngFor="let item of productData.size; keyvalue">
-              <button>{{ item }}</button>
-            </div>
+            <h4>{{ athleteData.email }}</h4>
+            <p>Athlete's Age {{ athleteData.athleteAge }}</p>
           </div>
         </div>
-        <button class="btn btn-primary" (click)="updateProduct(productData)">
+        <button class="btn btn-primary" (click)="editAthlete(athleteData)">
           <i class="fas fa-edit"></i> Edit Item
         </button>
       </div>
@@ -45,48 +41,43 @@
         <div class="row">
           <div class="card">
             <div class="card-body">
-              <label for="">Product Name </label>
+              <label for="">Parent Name </label>
               <input
                 type="text"
                 class="form-control"
-                [(ngModel)]="productData.productName"
+                [(ngModel)]="athleteObj.parentName"
               />
-              <label for="">Category </label>
+              <label for="">Athlete Name</label>
               <input
                 type="text"
-                [(ngModel)]="productData.category"
+                [(ngModel)]="athleteObj.athleteName"
                 class="form-control"
               />
-              <label for="">Description </label>
+              <label for="">Email </label>
+              <input type="text" [(ngModel)]="athleteObj.email" class="form-control" />
+              <label for="">Athlete's Age</label>
               <input
                 type="text"
-                [(ngModel)]="productData.description"
+                [(ngModel)]="athleteObj.athleteAge"
                 class="form-control"
               />
-              <label for="">Quantity</label>
+              <label for="">Athlete's Experience </label>
               <input
                 type="text"
-                [(ngModel)]="productData.quantity"
+                [(ngModel)]="athleteObj.athleteExp"
                 class="form-control"
               />
-              <label for="">Price </label>
-              <input type="text" [(ngModel)]="productData.price" class="form-control" />
               <label for="">Image</label>
               <input
                 type="text"
-                [(ngModel)]="productData.imageUrl"
+                [(ngModel)]="athleteObj.athleteUrl"
                 class="form-control"
               />
-              <label for="">Sizes</label>
-              <input type="text" [(ngModel)]="productData.size" class="form-control" />
+
               <button class="btn btn-primary form-control mt-5" (click)="onUpdate()">
                 Update Product
               </button>
-              <button
-                class="btn btn-danger"
-                (click)="delProduct(productData._id)"
-                routerLink="/shop/products"
-              >
+              <button class="btn btn-danger" routerLink="/shop/products">
                 <i class="fas fa-trash"></i>
               </button>
             </div>

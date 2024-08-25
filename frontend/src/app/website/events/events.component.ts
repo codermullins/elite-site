@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-events',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class EventsComponent implements OnInit {
 eventList: any = []
-eventObj: any = []
+eventObj: any = {}
 isAdmin = true
 isEdit = false
 
@@ -20,6 +21,7 @@ constructor(private apiService: ApiService) {}
 
 ngOnInit(): void {
     this.getAllEvents()
+
 }
 
 getAllEvents() {

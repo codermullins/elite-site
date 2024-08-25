@@ -11,6 +11,8 @@ import { OrdersComponent } from './admin/orders/orders.component'
 import { ProductDetailsComponent } from './shop/product-details/product-details.component'
 import { ProductsComponent } from './shop/products/products.component'
 import { Routes } from '@angular/router'
+import { AthletesComponent } from './admin/athletes/athletes.component';
+import { AthleteDetailComponent } from './admin/athlete-detail/athlete-detail.component';
 
 export const routes: Routes = [
   {
@@ -67,7 +69,16 @@ export const routes: Routes = [
       {
         path: 'orders',
         component: OrdersComponent
+      },
+      {
+        path: 'athletes',
+        component: AthletesComponent
+      },
+      {
+        path: 'athlete-detail/:id',
+        component: AthleteDetailComponent
       }
+
     ],
   },
 ]

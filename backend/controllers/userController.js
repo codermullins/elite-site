@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Athlete = require("../models/athlete");
 
 exports.register = async (req, res) => {
   try {
@@ -81,4 +82,22 @@ exports.login = async (req, res) => {
     console.log(error.message);
     return res.status(500).json({ message: "Error during login" });
   }
+};
+
+exports.classSignup = (req, res, next) => {
+  const athlete = new Athlete({
+    parentName: req.body.parentName,
+    athleteName: req.body.athleteName,
+    email: req.body.email,
+    athleteAge: req.body.athleteAge,
+    athleteExp: req.body.athleteExp,
+  });
+  athlete
+    .save()
+    .then((result) => {
+      res.status(201).json(athlete);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

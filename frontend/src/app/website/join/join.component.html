@@ -1,1 +1,78 @@
-<p>join works!</p>
+<div class="row text-center p-3">
+  <h1>Join Us</h1>
+  <h4 class="col-8 mx-auto">
+    Do you have an athlete that would like to join us in learning or improving their
+    skills?
+  </h4>
+  <h4>We have classes for all ages and experience levels.</h4>
+  <h4>If Interested please sign up for classes here.</h4>
+</div>
+
+<div class="col-8 mx-auto p-3">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form class="p-2">
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              [(ngModel)]="athleteObj.email"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="parentName">Parent's Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="ParentName"
+              placeholder="Parent's Name"
+              [(ngModel)]="athleteObj.parentName"
+              name="parentName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="athleteName">Athlete's Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="AthleteName"
+              placeholder="Athlete Name"
+              [(ngModel)]="athleteObj.athleteName"
+              name="athleteName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="athleteAge">Athlete's Age</label>
+            <input
+              type="text"
+              class="form-control"
+              name="AthleteAge"
+              placeholder="Athelete Age"
+              [(ngModel)]="athleteObj.athleteAge"
+              name="athleteAge"
+            />
+          </div>
+          <div class="form-group">
+            <label for="athleteExp">Athlete's Experience</label>
+            <input
+              type="text"
+              class="form-control"
+              name="AthleteExp"
+              placeholder="Athlete Exp"
+              [(ngModel)]="athleteObj.athleteExp"
+              name="athleteExp"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary my-2" (click)="onSave()">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

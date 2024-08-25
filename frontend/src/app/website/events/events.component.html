@@ -10,6 +10,7 @@
           <th>Location</th>
           <th>Date</th>
           <th>Event Site</th>
+          <th></th>
         </tr>
         <tr *ngFor="let event of eventList">
           <td>{{ event.title }}</td>
@@ -18,16 +19,20 @@
           <td>
             <a href="{{ event.site }}">{{ event.site }}</a>
           </td>
-          <button (click)="loadEvent(event._id)">Edit</button>
-          <button class="btn btn-danger my-3" (click)="onDelete(event._id)">
-            Delete
-          </button>
+          <td>
+            <button class="btn btn-primary mx-2" (click)="loadEvent(event._id)">
+              Edit
+            </button>
+            <button class="btn btn-danger my-3" (click)="onDelete(event._id)">
+              Delete
+            </button>
+          </td>
         </tr>
       </table>
     </div>
-    <div *ngIf="!eventList">
+    <!-- <div *ngIf="!eventList._id">
       <h1>There are not events Currently</h1>
-    </div>
+    </div> -->
     <!-- section for the add feature only displayed if admin -->
     <div class="col-4">
       <div class="card">

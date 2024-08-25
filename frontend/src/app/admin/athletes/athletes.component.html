@@ -1,0 +1,36 @@
+<div class="row text-center p-3">
+  <h1>Athletes</h1>
+</div>
+<div class="row">
+  <div class="container-fluid col-12">
+    <div class="row p-3 mx-auto mb-5" *ngIf="athleteList">
+      <table class="border text-center">
+        <tr class="border">
+          <th>Athlete</th>
+          <th>Age</th>
+          <th>EXP</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let athlete of athleteList">
+          <td>{{ athlete.athleteName }}</td>
+          <td>{{ athlete.athleteAge }}</td>
+          <td>{{ athlete.athleteExp }}</td>
+          <td>
+            <button
+              class="btn btn-primary mx-2"
+              routerLink="/athlete-detail/{{ athlete._id }}"
+            >
+              Edit
+            </button>
+            <button class="btn btn-danger my-3" (click)="deleteAthlete(athlete._id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="athleteList <= 0">
+      <h1>There are currently no Athletes</h1>
+    </div>
+  </div>
+</div>

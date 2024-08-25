@@ -1,5 +1,6 @@
 const Product = require("../models/product");
 const Event = require("../models/events");
+const Athlete = require("../models/athlete");
 
 /**Section for Product admin control */
 
@@ -27,7 +28,7 @@ exports.postAddProduct = (req, res, next) => {
 
 //Updating a product
 exports.postUpdateProduct = (req, res, next) => {
-  const productId = req.body._id;
+  const productId = req.body.id;
   const updatedProductName = req.body.productName;
   const updatedDescription = req.body.description;
   const updatedCategory = req.body.category;
@@ -131,11 +132,71 @@ exports.postUpdateEvent = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
+//get event to fill form for update
 exports.getEvent = (req, res, next) => {
   const eventId = req.params.id;
   Event.findById(eventId)
     .then((event) => {
       res.send(event);
+    })
+    .catch((err) => console.log(err));
+};
+
+//get the list of athletes signed up
+exports.getAthletes = (req, res, next) => {
+  try {
+    Athlete.find().then((athletes) => {
+      console.log(athletes);
+      res.json(athletes);
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+//get a single athlete's details
+exports.getAthleteDetail = (req, res, next) => {
+  const athleteId = req.params.id;
+  Athlete.findById(athleteId)
+    .then((athlete) => {
+      res.send(athlete);
+    })
+    .catch((err) => console.log(err));
+};
+
+//delete and athlete
+exports.deleteAthlete = (req, res, next) => {
+  const athleteId = req.params.id;
+  Athlete.findByIdAndDelete(athleteId)
+    .then((result) => {
+      console.log("Athlete Deleted");
+      res.status(201).json("Athlete has been deleted");
+    })
+    .catch((err) => console.log(err));
+};
+
+//update an athletes details
+exports.updateAthlete = (req, res, next) => {
+  const athleteId = req.body._id;
+  const updatedParentName = req.body.parentName;
+  const updatedAthleteName = req.body.athleteName;
+  const updatedEmail = req.body.email;
+  const updatedAthleteAge = req.body.athleteAge;
+  const updatedAthleteExp = req.body.athleteExp;
+
+  Athlete.findById(athleteId)
+    .then((athlete) => {
+      athlete.parentName = updatedParentName;
+      athlete.athleteName = updatedAthleteName;
+      athlete.email = updatedEmail;
+      athlete.athleteAge = updatedAthleteAge;
+      athlete.athleteExp = updatedAthleteExp;
+
+      return athlete.save();
+    })
+    .then((result) => {
+      console.log("Updated Athlete");
+      res.status(201).send(result);
     })
     .catch((err) => console.log(err));
 };

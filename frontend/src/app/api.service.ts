@@ -41,7 +41,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + '/products/removeFromCart', obj)
   }
 
-  /**block for user api */
+  /**block for shop user api */
   addNewUser(obj: any) {
     return this.http.post(this.apiUrl + "/users/signup", obj)
   }
@@ -53,6 +53,7 @@ export class ApiService {
   getAllUsers() {
     return this.http.get(this.apiUrl + '/users')
   }
+
 
   /**Block for Order List calls */
   postOrder(obj: any){
@@ -83,5 +84,27 @@ export class ApiService {
   getEvent(id: any) {
     return this.http.get(this.apiUrl + `/events/getEvent/${id}`)
   }
+  
+  /**Block for the Athlete signup */
+  getAthlete() {
+    return this.http.get(this.apiUrl + '/users/getAthletes')
+  }
+
+  getAthleteDetail(id: any) {
+    return this.http.get(this.apiUrl + `/users/getAthleteDetail/${id}`, id)
+  }
+
+  signUp(obj: any) {
+    return this.http.post(this.apiUrl + '/users/classSignUp', obj)
+  }
+
+  deleteAthlete(id: any){
+    return this.http.delete(this.apiUrl + `/users/deleteAthlete/${id}`, id)
+  }
+
+  updateAthlete(id: any, obj: any) {
+    return this.http.put(this.apiUrl + `/users/updateAthlete/${id}`, obj)
+  }
+
 
 }
